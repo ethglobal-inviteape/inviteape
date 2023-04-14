@@ -10,6 +10,9 @@ interface IChildERC721 {
     event GivenBack(address indexed from, address indexed to, uint256 indexed tokenId, uint256 timestamp);
 
     function mint(uint256 tokenId) external;
+    function lend(address to, uint256 tokenId, uint256 duration) external;
+    function claim(uint256 tokenId) external;
+    function giveBack(uint256 tokenId) external;
     function motherERC721() external view returns (address);
     function expiration(uint256 tokenId) external view returns (uint256);
 }
@@ -46,6 +49,46 @@ contract ChildERC721 is ERC721, IChildERC721 {
     function mint(uint256 tokenId) public virtual {
         address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
         _safeMint(originOwner, tokenId);
+    }
+
+    function lend(address to, uint256 tokenId, uint256 duration) public override {
+        address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
+        require(
+            msg.sender == originOwner ||
+            isApprovedForAll(originOwner, _msgSender())
+        );
+
+        uint256 expiration_ = block.timestamp + duration;
+        _expirations[tokenId] = expiration_;
+
+        _transfer(originOwner, to, tokenId);
+        emit Lent(originOwner, to, tokenId, duration);
+    }
+
+    function claim(uint256 tokenId) public override {
+        require(_expirations[tokenId] < block.timestamp, "ChildERC721: not expired");
+
+        address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
+        require(
+            msg.sender == originOwner ||
+            isApprovedForAll(originOwner, _msgSender())
+        );
+
+        address owner = ERC721.ownerOf(tokenId);
+        _transfer(owner, originOwner, tokenId);
+        emit Claimed(originOwner, owner, tokenId, block.timestamp);
+    }
+
+    function giveBack(uint256 tokenId) public override {
+        address owner = _ownerOf(tokenId);
+        require(
+            msg.sender == owner ||
+            isApprovedForAll(owner, _msgSender())
+        );
+
+        address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
+        _transfer(owner, originOwner, tokenId);
+        emit GivenBack(owner, originOwner, tokenId, block.timestamp);
     }
 
     function motherERC721() public view override returns (address) {
