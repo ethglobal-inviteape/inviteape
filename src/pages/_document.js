@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -7,10 +7,10 @@ export default function Document() {
         <title>Invite Apes</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <body>
+      <body bgcolor="#221d1d">
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

@@ -28,8 +28,10 @@ export default function App({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <ConnectButton />
-        <div className="-mt-[40px] w-96 mx-auto px-8 min-h-screen flex flex-col shadow-md rounded-lg bg-white overflow-y-auto overflow-x-auto border-black">
+        <div className="flex flex-row-reverse mt-4 mr-6">
+          <ConnectButton />
+        </div>
+        <div className="w-96 mx-auto px-8 min-h-screen flex flex-col shadow-md rounded-lgoverflow-y-auto overflow-x-auto border-black">
           <Component {...pageProps} />
         </div>
       </RainbowKitProvider>

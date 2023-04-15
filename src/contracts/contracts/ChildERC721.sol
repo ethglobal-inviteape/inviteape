@@ -47,8 +47,8 @@ contract ChildERC721 is ERC721, IChildERC721 {
     }
 
     function mint(uint256 tokenId) public virtual {
-        address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
-        _safeMint(originOwner, tokenId);
+        // address originOwner = IERC721(_motherERC721).ownerOf(tokenId);
+        // _safeMint(msg.sender, tokenId);
     }
 
     function lend(address to, uint256 tokenId, uint256 duration) public override {

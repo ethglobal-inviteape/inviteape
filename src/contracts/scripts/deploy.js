@@ -12,8 +12,8 @@ async function main() {
 
   const lockedAmount = hre.ethers.utils.parseEther("0.001");
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const Lock = await hre.ethers.getContractFactory("ChildERC721");
+  const lock = await Lock.deploy("child", "cNFT", "0xfb47B660b14a4cCcaC7e26f60502359D1631a518");
 
   await lock.deployed();
 

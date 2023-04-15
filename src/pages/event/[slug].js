@@ -22,13 +22,13 @@ const modalStyle = {
 
 export default function Event() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [tokenId, setTokenId] = useState("1");
+  const [tokenId, setTokenId] = useState("2");
   const [isHolder, setIsHolder] = useState(false);
 
   const { address } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: "0x057ef64e23666f000b34ae31332854acbd1c8544",
+    address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
     abi: ChildERC721.abi,
     functionName: "mint",
     args: [ethers.BigNumber.from(tokenId)],
@@ -36,7 +36,7 @@ export default function Event() {
   const { write } = useContractWrite(config);
 
   const { data: balance } = useContractRead({
-    address: "0x057ef64e23666f000b34ae31332854acbd1c8544",
+    address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
     abi: ChildERC721.abi,
     functionName: "balanceOf",
     args: [address],
