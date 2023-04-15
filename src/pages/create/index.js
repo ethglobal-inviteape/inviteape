@@ -62,73 +62,71 @@ export default function Create() {
 
   return (
     <div>
+      <div className="text-gray-400 text-xl">Create Event</div>
+      <div className="text-white text-3xl">Event Detail</div>
       <div>
-        <div className="text-gray-400 text-xl">Create Event</div>
-        <div className="text-white text-3xl">Event Detail</div>
-        <div>
-          <input
-            className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
-            placeholder="Event Title"
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
-            placeholder="Event Date"
-            type="text"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
-            type="text"
-            placeholder="Location"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <textarea
-            style={{
-              height: "227px",
-            }}
-            className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4 pt-4"
-            id="description"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <button
-          className="bg-green-700 w-85 h-48 rounded-2xl text-2xl text-white border-2 border-transparent hover:border-green-500"
-          style={{
-            width: "349px",
-            height: "79px",
-          }}
-          onClick={() =>
-            deployAndAddEvent({
-              title,
-              date,
-              location,
-              description,
-            })
-          }
-        >
-          Create Event
-        </button>
+        <input
+          className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
+          placeholder="Event Title"
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
       </div>
+      <div>
+        <input
+          className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
+          placeholder="Event Date"
+          type="text"
+          id="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <input
+          className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4"
+          type="text"
+          placeholder="Location"
+          id="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <textarea
+          style={{
+            height: "227px",
+          }}
+          className="text-gray-400 bg-black h-16 rounded-xl pl-4 mb-4 pt-4"
+          id="description"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+      </div>
+      <button
+        className="bg-green-700 w-85 h-48 rounded-2xl text-2xl text-white border-2 border-transparent hover:border-green-500"
+        style={{
+          width: "349px",
+          height: "79px",
+        }}
+        onClick={() =>
+          deployAndAddEvent({
+            title,
+            date,
+            location,
+            description,
+          })
+        }
+      >
+        Create Event
+      </button>
     </div>
   );
 }
