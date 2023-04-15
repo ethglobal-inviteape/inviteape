@@ -6,7 +6,7 @@ import Router from "next/router";
 
 function NFT({ tokenId }) {
   return (
-    <div className="p-1 py-4 rounded-xl border-2 border-slate-500 text-center border-green-500 hover:cursor-pointer">
+    <div className="p-1 py-4 rounded-xl border-2 text-center border-green-500 hover:cursor-pointer">
       <div>
         <div className="text-white text-2xl">BAYC</div>
         <div className="text-white text-2xl">#{tokenId}</div>
