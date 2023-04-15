@@ -9,9 +9,9 @@ function Event({ event }) {
         Router.push("/event/" + event.title);
       }}
     >
-      <div className="text-white pb-2 pl-4 text-3xl">{event.title}</div>
+      <div className="text-white pb-4 pl-4 text-2xl">{event.title}</div>
       <div
-        className="pl-4"
+        className="pl-4 pb-2"
         style={{
           color: "#00ff00",
         }}
@@ -33,7 +33,7 @@ function Event({ event }) {
               color: "#00ff00",
             }}
           >
-            12 Attendees
+            {event.attendees.length} Attendees
           </div>
         </div>
         <div
@@ -44,7 +44,7 @@ function Event({ event }) {
             color: "#ffc400",
           }}
         >
-          4 Invites Available
+          {event.invitesAvailable.length} Invites Available
         </div>
       </div>
     </div>
@@ -54,13 +54,24 @@ function Event({ event }) {
 export default function Browse() {
   const dummyData = [
     {
-      title: '1234',
-      motherERC721: '1234',
-      childERC721: '1234',
-      location: '1234',
-      date: '1234',
-    }
-  ]
+      title: "Official BAYC Meet-up in NFT NYC !",
+      motherERC721: "1234",
+      childERC721: "1234",
+      location: "Intrepid Sea, Air & Space Museum",
+      date: "Thu, Apr 20, 08:00pm",
+      attendees: [1, 2, 3],
+      invitesAvailable: [1, 2],
+    },
+    // {
+    //   title: "Hello Miami! (Armory Show After Hour Gathering)",
+    //   motherERC721: "1234",
+    //   childERC721: "1234",
+    //   location: "Space Club Downtown Miami",
+    //   date: "Thu, Apr 20, 08:00pm",
+    //   attendees: [1],
+    //   invitesAvailable: [1, 2, 3],
+    // },
+  ];
   const [events, setEvents] = useState(null);
 
   const fetchEvents = async () => {
@@ -71,6 +82,7 @@ export default function Browse() {
     // } catch (error) {
     //   console.error("Error fetching data:", error);
     // }
+    setEvents(dummyData);
   };
 
   useEffect(() => {
