@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
         <div className="flex flex-row-reverse mt-4 mr-6">
           <ConnectButton />
         </div>
-        <div className="w-96 mx-auto px-8 min-h-screen flex flex-col shadow-md rounded-lgoverflow-y-auto overflow-x-auto border-black">
+        <div className="-mt-[40px] w-96 mx-auto px-8 min-h-screen flex flex-col shadow-md overflow-y-auto overflow-x-auto border-black bg-[#211D1D] text-white">
           <Component {...pageProps} />
         </div>
       </RainbowKitProvider>
