@@ -16,7 +16,7 @@ const Confirm = () => {
         </div>
         <div
           className="flex w-[250px] flex-row items-center justify-center py-2 text-[18px]">
-          BAYC #0000-X
+          BAYC #8116
         </div>
         <div
           className="mb-3 flex w-[250px] flex-row items-center justify-center py-2 text-[18px]">Duration:

@@ -22,7 +22,7 @@ const EventDetail = () => {
           <div className="mx-auto flex flex-col py-2 px-4 text-[#FFFFFF] bg-[#0E0E0E] rounded-lg">
             <div className="flex flex-col item-center">
               <div className="mb-3 flex flex-row item-center justify-center text-glowgreen text-[24px] text-center">You’ve successfully rented
-                BAYC #0000-X!</div>
+                BAYC #8116</div>
               <div className="mb-6 flex flex-row item-center justify-center">
                 <img
                 className="h-[148px] w-[148px] rounded-lg"
