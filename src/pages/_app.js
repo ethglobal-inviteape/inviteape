@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <QueryClientProvider client={queryClient}>
-          <div className="flex flex-row-reverse mt-4 mr-6">
+          <div className="flex flex-row-reverse mr-6">
             <ConnectButton />
           </div>
           <div

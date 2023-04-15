@@ -26,10 +26,11 @@ const EventDetail = () => {
               <div className="mb-6 flex flex-row item-center justify-center">
                 <img
                 className="h-[148px] w-[148px] rounded-lg md:h-[280px] md:w-[280px]"
+                alt="bayc-child-nft"
                 src={baycImg.src}/>
               </div>
               <div
-                class="mb-6 flex w-[250px] h-[68px] flex-row items-center justify-center rounded-lg bg-green-600 py-2 text-base text-white mx-auto text-[24px]">Share on Lens
+                className="mb-6 flex w-[250px] h-[68px] flex-row items-center justify-center rounded-lg bg-green-600 py-2 text-base text-white mx-auto text-[24px]">Share on Lens
               </div>
             </div>
 
