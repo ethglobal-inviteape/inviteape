@@ -35,7 +35,7 @@ export default function Lend() {
       lender: address,
       borrower: ethers.constants.AddressZero,
       erc721: "0x30f0f60E510a64F8E28d30731Fe70B8c168fe760",
-      tokenId: 123,
+      tokenId: 8116,
       erc20: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       amount: 100,
       duration,
@@ -69,7 +69,7 @@ export default function Lend() {
         Select an NFT
       </div>
       <div className="flex-row grid grid-cols-3 gap-2">
-        <NFT tokenId={123} />
+        <NFT tokenId={8116} />
         {/* <NFT tokenId={456} /> */}
         {/* <NFT tokenId={789} /> */}
       </div>

@@ -36,7 +36,7 @@ export default function LendCompleted() {
         >
           Your NFT is Listed!
         </div>
-        <div>BAYC #123</div>
+        <div>BAYC #8116</div>
         <div>Duration: 20 Days</div>
         <div
           style={{
