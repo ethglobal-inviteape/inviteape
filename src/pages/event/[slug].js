@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import {
+  useAccount,
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+} from "wagmi";
 import ChildERC721 from "../../abi/ChildERC721.json";
 import { ethers } from "ethers";
 import Modal from "react-modal";
@@ -17,15 +22,29 @@ const modalStyle = {
 
 export default function Event() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [tokenId, setTokenId] = useState("0");
+  const [tokenId, setTokenId] = useState("1");
+  const [isHolder, setIsHolder] = useState(false);
+
+  const { address } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    address: "0x057ef64e23666f000b34ae31332854acbd1c8544",
     abi: ChildERC721.abi,
     functionName: "mint",
     args: [ethers.BigNumber.from(tokenId)],
   });
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  const { write } = useContractWrite(config);
+
+  const { data: balance } = useContractRead({
+    address: "0x057ef64e23666f000b34ae31332854acbd1c8544",
+    abi: ChildERC721.abi,
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  useEffect(() => {
+    balance?.toNumber() > 0 ? setIsHolder(true) : setIsHolder(false);
+  }, [balance]);
 
   function afterOpenModal() {}
 
@@ -39,6 +58,7 @@ export default function Event() {
 
   return (
     <div>
+      <div>{isHolder ? `You're a Holder!` : `Your're a not Holder!`}</div>
       <button
         onClick={() => {
           write();
