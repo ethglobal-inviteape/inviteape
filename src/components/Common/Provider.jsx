@@ -6,6 +6,7 @@ import { mainnet, polygon, polygonMumbai } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { Layout } from '@/components/Common/Layout';
 
 
 const { chains, provider } = configureChains(
