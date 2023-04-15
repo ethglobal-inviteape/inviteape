@@ -1,43 +1,43 @@
-import React, { useState, useEffect } from "react";
-import Head from "next/head";
+import { useConnect, useAccount } from "wagmi";
+import Router from "next/router";
 
 export default function Home() {
-  const [data, setData] = useState(null);
+  const { isConnected } = useAccount();
+  const { connect, connectors } = useConnect();
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/data");
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const connectWalletRedirectToCreateEvent = () => {
+    _checkWalletConnection();
+
+    if (isConnected) Router.push("/create");
+  };
+  const connectWalletRedirectToBrowseEvent = () => {
+    _checkWalletConnection();
+
+    if (isConnected) Router.push("/browse");
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const _checkWalletConnection = () => {
+    const metamask = connectors[3];
+
+    connect({ connector: metamask });
+  };
 
   return (
     <div>
-      <Head>
-        <title>My Next.js App</title>
-        <meta name="description" content="A simple Next.js application" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1>
-          Welcome to my <a href="https://nextjs.org">Next.js</a> app!
-        </h1>
-
-        {data && (
-          <div>
-            <h2>Data from the API:</h2>
-            <p>{JSON.stringify(data)}</p>
-          </div>
-        )}
-      </main>
+      <button
+        onClick={() => {
+          connectWalletRedirectToCreateEvent();
+        }}
+      >
+        Create
+      </button>
+      <button
+        onClick={() => {
+          connectWalletRedirectToBrowseEvent();
+        }}
+      >
+        Browse
+      </button>
     </div>
   );
 }
