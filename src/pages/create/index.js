@@ -19,9 +19,29 @@ export default function Create() {
     console.log(contract);
   };
 
+  const addEvent = async () => {
+    const event = {
+      title: "1234",
+    };
+    try {
+      const response = await fetch("/api/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event),
+      });
+
+      const data = await response.json();
+      console.log("Item added:", data);
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
+  };
+
   return (
     <div>
-      <button onClick={() => deploy()}>Deploy</button>
+      <button onClick={() => addEvent()}>Deploy</button>
     </div>
   );
 }
