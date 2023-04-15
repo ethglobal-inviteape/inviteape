@@ -2,11 +2,17 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import Router from "next/router";
 import { useNetwork, useSigner, useAccount } from "wagmi";
+import baycImg from "./bayc-circle.png";
 
 function NFT({ tokenId }) {
   return (
     <div className="p-1 py-4 rounded-xl border-2 text-center border-green-500 hover:cursor-pointer">
-      <div>
+      <div className="flex flex-col items-center">
+        <img
+          className="h-[148px] w-[148px] rounded-lg md:h-[80px] md:w-[80px]"
+          alt="bayc-child-nft"
+          src={baycImg.src}
+        />
         <div className="text-white text-2xl">BAYC</div>
         <div className="text-white text-2xl">#{tokenId}</div>
       </div>
