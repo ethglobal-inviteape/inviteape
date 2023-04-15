@@ -1,8 +1,7 @@
-import { useSigner } from "wagmi";
-import { ContractFactory } from "ethers";
-import ChildERC721 from "../../abi/ChildERC721.json";
 import { useState } from "react";
+import { ethers } from "ethers";
 import Router from "next/router";
+import { useNetwork, useSigner, useAccount } from "wagmi";
 
 function NFT({ tokenId }) {
   return (
@@ -18,6 +17,45 @@ function NFT({ tokenId }) {
 export default function Lend() {
   const [price, setPrice] = useState("");
   const [duration, setDuration] = useState("");
+
+  const { chain, chains } = useNetwork();
+  const { data: signer } = useSigner();
+  const { address } = useAccount();
+  console.log(chain);
+
+  const domain = {
+    name: "inviteape",
+    version: "0.1",
+    chainId: chain?.id,
+    verifyingContract: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+  };
+
+  const sign = async () => {
+    const bidding = {
+      lender: address,
+      borrower: ethers.constants.AddressZero,
+      erc721: "0x30f0f60E510a64F8E28d30731Fe70B8c168fe760",
+      tokenId: 123,
+      erc20: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      amount: 100,
+      duration,
+    };
+    await signer._signTypedData(domain, types, bidding);
+
+    Router.push("/lend/completed");
+  };
+
+  const types = {
+    Bidding: [
+      { name: "lender", type: "address" },
+      { name: "borrower", type: "address" },
+      { name: "erc721", type: "address" },
+      { name: "tokenId", type: "uint256" },
+      { name: "erc20", type: "address" },
+      { name: "amount", type: "uint256" },
+      { name: "duration", type: "uint256" },
+    ],
+  };
 
   return (
     <div>
@@ -112,7 +150,7 @@ export default function Lend() {
         style={{
           height: "79px",
         }}
-        onClick={() => alert()}
+        onClick={() => sign()}
       >
         List NFT
       </button>
