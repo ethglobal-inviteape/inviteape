@@ -52,17 +52,25 @@ function Event({ event }) {
 }
 
 export default function Browse() {
+  const dummyData = [
+    {
+      title: '1234',
+      motherERC721: '1234',
+      childERC721: '1234',
+      location: '1234',
+      date: '1234',
+    }
+  ]
   const [events, setEvents] = useState(null);
 
   const fetchEvents = async () => {
-    try {
-      const response = await fetch("/api/get");
-      const events = await response.json();
-
-      setEvents(events);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    // try {
+    //   const response = await fetch("/api/get");
+    //   const events = await response.json();
+    //   setEvents(events);
+    // } catch (error) {
+    //   console.error("Error fetching data:", error);
+    // }
   };
 
   useEffect(() => {

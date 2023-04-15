@@ -7,23 +7,10 @@ import {
 } from "wagmi";
 import ChildERC721 from "../../abi/ChildERC721.json";
 import { ethers } from "ethers";
-import Modal from "react-modal";
-
-const modalStyle = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+import Router from "next/router";
 
 export default function Event() {
-  const [modalIsOpen, setIsOpen] = useState(false);
   const [tokenId, setTokenId] = useState("2");
-  const [isHolder, setIsHolder] = useState(false);
 
   const { address } = useAccount();
 
@@ -41,20 +28,6 @@ export default function Event() {
     functionName: "balanceOf",
     args: [address],
   });
-
-  useEffect(() => {
-    balance?.toNumber() > 0 ? setIsHolder(true) : setIsHolder(false);
-  }, [balance]);
-
-  function afterOpenModal() {}
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div>
@@ -88,27 +61,10 @@ export default function Event() {
         style={{
           height: "79px",
         }}
-        onClick={openModal}
+        onClick={() => Router.push("/lend")}
       >
         Lend Your NFT
       </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={modalStyle}
-        contentLabel="Example Modal"
-      >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
     </div>
   );
 }
