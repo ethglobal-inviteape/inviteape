@@ -1,7 +1,8 @@
 import { MongoClient } from "mongodb";
 
-const uri = 
-const dbName = 
+const uri =
+  "mongodb+srv://sgnoo:1234@cluster0.vyjx2fo.mongodb.net/?retryWrites=true&w=majority";
+const dbName = "ethglobal";
 
 let cachedClient = null;
 let cachedDb = null;
