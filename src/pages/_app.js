@@ -10,7 +10,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const { chains, provider } = configureChains(
-  [mainnet, goerli, hardhat],
+  [goerli],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 

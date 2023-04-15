@@ -15,7 +15,7 @@ export default function Event() {
   const { address } = useAccount();
 
   const { config } = usePrepareContractWrite({
-    address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    address: "0xa92204190c6b97fa9B1E56C91caB72035BF0F3Ce",
     abi: ChildERC721.abi,
     functionName: "mint",
     args: [ethers.BigNumber.from(tokenId)],
@@ -23,7 +23,7 @@ export default function Event() {
   const { write } = useContractWrite(config);
 
   const { data: balance } = useContractRead({
-    address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    address: "0xa92204190c6b97fa9B1E56C91caB72035BF0F3Ce",
     abi: ChildERC721.abi,
     functionName: "balanceOf",
     args: [address],

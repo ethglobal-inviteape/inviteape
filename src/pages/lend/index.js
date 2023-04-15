@@ -33,14 +33,14 @@ export default function Lend() {
     name: "inviteape",
     version: "0.1",
     chainId: chain?.id,
-    verifyingContract: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    verifyingContract: "0xa92204190c6b97fa9B1E56C91caB72035BF0F3Ce",
   };
 
   const sign = async () => {
     const bidding = {
       lender: address,
       borrower: ethers.constants.AddressZero,
-      erc721: "0x30f0f60E510a64F8E28d30731Fe70B8c168fe760",
+      erc721: "0xa92204190c6b97fa9B1E56C91caB72035BF0F3Ce",
       tokenId: 8116,
       erc20: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       amount: 100,
