@@ -11,7 +11,6 @@
   "dependencies": {
     "@apollo/client": "^3.7.12",
     "@lens-protocol/react-web": "^1.0.1",
-    "@lens-protocol/wagmi": "^1.0.1",
     "@openzeppelin/contracts": "^4.8.3",
     "@rainbow-me/rainbowkit": "^0.12.8",
     "autoprefixer": "10.4.14",
